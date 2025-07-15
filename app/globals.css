@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .chat-message {
+    @apply mb-4 p-4 rounded-lg shadow-sm;
+  }
+  
+  .user-message {
+    @apply bg-blue-50 border-l-4 border-blue-500 ml-8;
+  }
+  
+  .assistant-message {
+    @apply bg-gray-50 border-l-4 border-gray-500 mr-8;
+  }
+  
+  .loading-message {
+    @apply bg-yellow-50 border-l-4 border-yellow-500 mr-8;
+  }
+} 
