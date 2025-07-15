@@ -1,0 +1,95 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "health-fact-checker"
+version = "0.1.0"
+description = "AI-powered nutritional fact checker for health products"
+readme = "README.md"
+requires-python = "==3.11.11"
+license = {text = "MIT"}
+authors = [
+    {name = "Health Fact Checker Team"},
+]
+keywords = ["health", "fact-checking", "ai", "nutrition", "langchain"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+]
+
+dependencies = [
+    "fastapi>=0.104.1",
+    "uvicorn>=0.24.0",
+    "pydantic>=2.4.2",
+    "python-dotenv>=1.0.0",
+    "langchain>=0.0.350",
+    "langchain-openai>=0.0.5",
+    "langchain-community>=0.0.10",
+    "langgraph>=0.0.21",
+    "python-multipart>=0.0.6",
+    "httpx>=0.25.2",
+    "google-search-results>=2.4.2",
+    "tavily-python>=0.3.3",
+    "arxiv>=1.4.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/health-fact-checker"
+Repository = "https://github.com/yourusername/health-fact-checker"
+Issues = "https://github.com/yourusername/health-fact-checker/issues"
+
+[project.scripts]
+health-fact-checker = "api.main:main"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["api"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["api"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true 
